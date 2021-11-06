@@ -6,9 +6,9 @@ from datetime import datetime
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer,primary_key = True)
-    username = db.Column(db.String(255),unique = True,nullable = False)
-    email = db.Column(db.String(255),unique = True,nullable = False)
-    secure_password = db.Column(db.String(255),nullable = False)
+    username = db.Column(db.String(255),unique = True,nullable=False)
+    email = db.Column(db.String(255),unique = True,nullable=False)
+    secure_password = db.Column(db.String(255),nullable=False)
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     
@@ -26,14 +26,14 @@ class Pitch(db.Model):
     __tablename__ = 'pitches'
 
     id = db.Column(db.Integer,primary_key = True)
-    title = db.Column(db.String(255),nullable = False)
-    post = db.Column(db.Text(), nullable = False)
+    title = db.Column(db.String(255),nullable=False)
+    post = db.Column(db.String(), nullable=False)
     comment = db.relationship('Comment',backref='pitch',lazy='dynamic')
     upvote = db.relationship('Upvote',backref='pitch',lazy='dynamic')
     downvote = db.relationship('Downvote',backref='pitch',lazy='dynamic')
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     time = db.Column(db.DateTime, default = datetime.utcnow)
-    category = db.Column(db.String(255), index = True,nullable = False)
+    category = db.Column(db.String(255), index = True,nullable=False)
 
     def save_p(self):
         db.session.add(self)
@@ -44,10 +44,10 @@ class Pitch(db.Model):
 
 class Comment(db.Model):
     __tablename__ = 'comments'
-    id = db.Column(db.Integer,Primary_key=True)
-    comment = db.Column(db.Text(),nullable = False)
-    user_id = db.Column(db.Integer,db.ForeignKey('users.id',nullable = False))
-    pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id',nullable = False))
+    id = db.Column(db.Integer,primary_key=True)
+    comment = db.Column(db.String(),nullable = False)
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
+    pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'),nullable=False)
 
     def save_c(self):
         db.session.add(self)
