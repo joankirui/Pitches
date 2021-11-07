@@ -5,9 +5,18 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="#">Profile <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="#">My account</a>
-        <a class="nav-item nav-link" href="#">Log-out</a>
+        <ul class="nav navbar-nav navbar-right">
+          {% if current_user.is_authenticated %}
+          <li class = "nav-item">
+          <a class="nav-link active" href="#">{{current_user.username}} <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{{url_for('auth.logout')}}">Sign out</a>
+          </li>
+          {% else %}
+          <li class = "nav-item">
+          <a class="nav-link" href="{{url_for('auth.login')}}">Sign in</a>
+          </li>
+          {%endif%}
+        </ul>
       </div>
     </div>
   </nav>
