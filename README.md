@@ -41,3 +41,12 @@ Flask migrations are necessary for us to update our database
 |Select Login|Username and password|Redirect to page with app pitches based on categories and commenting section|
 |Select comment button|Comment|Form that you input your comment|
 |Click on submit||Redirect to all comments template with your comment and other comments|
+
+## Technologies used
+* Python3.6
+* Flask
+* Heroku
+
+## LICENSE
+* MIT License:
+* Copyright (c) 2021 Joan Kirui
