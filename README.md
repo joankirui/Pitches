@@ -3,6 +3,8 @@
     Joan Kirui
 ## Email
     joankirui99@gmail.com
+## Live link
+    https://pitchesjk.herokuapp.com/
 
 ## Project Description
     An application designed to utilize 60 seconds of one's life to impress someone! A user submits a one minute pitch and other users votes on their pitch, leave comments and give feedback on the pitch. Pitches are arranged in categories;Jobs,Advertisement,Events
@@ -32,3 +34,10 @@ Flask migrations are necessary for us to update our database
 
 
 ## Behaviour Driven Development
+|Behaviour|Input|Output|
+|---------|------|------|
+|Load the page|On page load|Get all posts, Select between signup and login|
+|Select SignUp|Email,Username,Password|Redirect to login|
+|Select Login|Username and password|Redirect to page with app pitches based on categories and commenting section|
+|Select comment button|Comment|Form that you input your comment|
+|Click on submit||Redirect to all comments template with your comment and other comments|
