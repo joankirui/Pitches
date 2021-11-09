@@ -1,6 +1,6 @@
 from flask import render_template,redirect,url_for,abort,request
 from .import main
-from flask_login import login_required
+from flask_login import login_required,current_user
 from ..models import User,Pitch,Comment,Upvote,Downvote
 from .forms import UpdateProfile,PitchForm,CommentForm
 from ..import db,photos
@@ -90,7 +90,7 @@ def like(id):
         else:
             continue
     new_vote = Upvote(user = current_user, pitch_id=id)
-    new_vote.save()
+    new_vote.save_v()
     return redirect(url_for('main.index',id=id))
 
 @main.route('/dislike/<int:id>',methods = ['POST','GET'])
@@ -106,5 +106,5 @@ def dislike(id):
         else:
             continue
     new_downvote = Downvote(user = current_user, pitch_id=id)
-    new_downvote.save()
+    new_downvote.save_d()
     return redirect(url_for('main.index',id = id))

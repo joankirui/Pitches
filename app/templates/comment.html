@@ -1,5 +1,6 @@
 {% extends 'base.html'%}
 {% import 'bootstrap/wtf.html' as wtf %}
+{% import 'macros.html' as macro %}
 
 {% block content %}
     <div class="container" id="allcomments">
@@ -13,7 +14,7 @@
                             <div class="card-body">
                              <h4>{{comment.pitch.title}}</h4>
                              <p class="card-title">{{ comment.comment }}</p>
-                             <p class="card-text">---  {{comment.user.username}}</p>
+                             <p class="card-text">{{comment.user.username}}</p>
                             </div>
                         </div>
                     {% endfor %}

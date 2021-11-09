@@ -30,7 +30,9 @@ class User(UserMixin,db.Model):
     def verify_password(self,password):
         return check_password_hash(self.secure_password,password)
 
-
+    def save_u(self):
+        db.session.add(self)
+        db.session.commit()
 
     def __repr__(self):
         return f'User {self.username}'
@@ -76,17 +78,17 @@ class Upvote(db.Model):
     users_id = db.Column(db.Integer,db.ForeignKey('users.id'))
     pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
 
-    def save(self):
+    def save_v(self):
         db.session.add(self)
         db.session.commit()
 
     @classmethod
     def  get_upvotes(cls,id):
         upvote = Upvote.query.filter_by(pitch_id=id).all()
-        return upvote
+        return upvote 
 
     def __repr__(self):
-        return f'{self.user_id}:{self.pitch_id}'
+        return f'{self.users_id}:{self.pitch_id}'
 
 class Downvote(db.Model):
     __tablename__ = 'downvotes'
@@ -95,7 +97,7 @@ class Downvote(db.Model):
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
     pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
 
-    def save(self):
+    def save_d(self):
         db.session.add(self)
         db.session.commit()
     @classmethod
