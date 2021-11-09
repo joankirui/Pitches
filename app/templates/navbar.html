@@ -4,7 +4,7 @@
   <div class="container text-center">
       <a class="navbar-brand p-2 fw-bolder" href="{{url_for('main.index')}}"style="text-decoration:none; color: white;" ></i><strong>Pitch-World</strong></a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="list-style-type: none;display: flex;justify-content: space-between;">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="list-style-type: none;">
               <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="{{url_for('main.index')}}"style="text-decoration:none; color: white;">Home</a>
               </li>
@@ -14,7 +14,7 @@
               </li>
               {% endif %}
           </ul>
-          <ul class="navbar-nav navbar-right" style="list-style-type: none;display: flex;justify-content: space-between;">
+          <ul class="navbar-nav navbar-right" style="list-style-type: none;">
               {% if current_user.is_authenticated %}
               <li class="nav-item">
                   <a href="{{url_for('main.profile',name=current_user.username)}}" class="nav-link"style="text-decoration:none; color: white;">Profile</a>
